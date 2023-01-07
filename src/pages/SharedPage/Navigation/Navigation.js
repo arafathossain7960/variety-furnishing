@@ -1,13 +1,35 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthProvider';
 
 const Navigation = () => {
+    const {user, loginOut}=useContext(AuthContext);
+    
+    // login out 
+    const userLoginOut = ()=>{
+        loginOut()
+        .then(result =>{
+            console.log(result)
+        })
+        .then(error =>{
+            console.log(error);
+        })
+    }
     const nabItem = [
         <Link to='/'>Home</Link>,
-
-        <Link to='/login'>Login</Link>,
         <Link to='/blogs'>Blog</Link>,
-        <Link to='/dashboard'>Dashboard</Link>
+        <Link to='/dashboard'>Dashboard</Link>,
+        <>
+        {
+            user?.uid && user?.email? <>
+            <button onClick={userLoginOut}>Login out</button>
+        
+        <p>{user?.displayName}</p>
+            </>:
+             <Link to='/login'>Login</Link>
+
+        }
+        </>
     ]
     return (
         <div className="navbar bg-info">
