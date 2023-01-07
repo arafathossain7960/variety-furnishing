@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { json, Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 
 const Register = () => {
@@ -12,16 +12,18 @@ const Register = () => {
         const email = data.email;
         const password = data.password;
         const accountType = data.accountType;
-        const userAccountInfo = {name, email, password, accountType,}
+        const userAccountInfo = {name, email, accountType, role:'', adminVerify:false };
 
         createUser(email, password)
         .then(result =>{
             updateUser(name)
             .then(updateSuccess =>{
                 console.log(updateSuccess)
+                saveUser(userAccountInfo);
             })
             .catch(updateFail =>{
                 console.log(updateFail)
+                
             })
         })
         .catch(error =>{
@@ -35,10 +37,30 @@ const Register = () => {
     const handleGoogleSignIn =()=>{
         googleSingIn()
         .then(result =>{
-            console.log(result)
+            const name = result.user.displayName;
+            const email = result.user.email;
+            const userAccountInfo = {name, email, accountType:'buyer', role:'', adminVerify:false };
+            saveUser(userAccountInfo);
         })
         .catch(error => {
             console.log(error)
+        })
+    }
+
+    const saveUser=userInfo=>{
+        fetch('http://localhost:5000/user',{
+            method:'POST',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(userInfo)
+        })
+        .then(res => res.json())
+        .then(data =>{
+            if(data.insertedId){
+                alert('user success fully created')
+            }
+               
         })
     }
     return (
