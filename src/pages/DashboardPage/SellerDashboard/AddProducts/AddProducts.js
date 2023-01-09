@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast, ToastContainer } from 'react-toastify';
 import { AuthContext } from '../../../../context/AuthProvider';
-import { ToastContainer, toast } from 'react-toastify';
+
 
 const AddProducts = () => {
     const {user}=useContext(AuthContext);
@@ -49,10 +50,19 @@ const AddProducts = () => {
     .then(res => res.json())
     .then(data =>{
         if(data.acknowledged ){
-            toast('Product add success');
+            toast.success("Product successfully added",{
+                position:'top-center',
+                theme: "colored",
+               })
             reset();
             
         }
+       else{
+        toast.error("Failed to add ",{
+            position:'top-center',
+            theme: "colored",
+           })
+       }
            
     })
 
@@ -86,7 +96,7 @@ const AddProducts = () => {
   </label>
   <select className='input text-accent' {...register("productCategory", { required: true })}>
         <option value="bedroom">Bedroom</option>
-        <option  value="diningRoom">Dining Room</option>
+        <option  value="kitchen">Kitchen Room</option>
         <option  value="officeRoom">Office Room</option>
         <option  value="drawingRoom">Drawing Room</option>
       </select>
@@ -187,7 +197,9 @@ const AddProducts = () => {
         </form>
         
 
-
+        <ToastContainer
+        position='top-center'
+        ></ToastContainer>
     </div>
     );
 };
