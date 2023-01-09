@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../../context/AuthProvider';
 
 const Login = () => {
     const {loginUser, googleSingIn }=useContext(AuthContext);
-    const { register, handleSubmit,  formState: { errors } } = useForm();
+    const { register, handleSubmit,  reset,  formState: { errors } } = useForm();
   
   // login function
   const handleRegister =(data)=>{
@@ -17,10 +19,10 @@ loginUser(email, password)
         console.log(result)
     })
     .catch(error =>{
-        console.log(error)
+        toast('Login failed');
     })
    
-
+    reset();
 }
      // google handler
      const handleGoogleSignIn =()=>{
@@ -29,12 +31,18 @@ loginUser(email, password)
             console.log(result)
         })
         .catch(error => {
-            console.log(error)
+           toast.error("Login failed",{
+            position:'top-center',
+            theme: "colored",
+           }
+         
+           
+           )
         })
     }
     return (
-        <div className='mx-auto w-96 my-32 text-black shadow border round p-10'>
-        <h3 className='text-center text-2xl text-primary'>Please Sign up</h3>
+        <div className='mx-auto w-96 my-10 text-black shadow border round p-10'>
+        <h3 className='text-center text-2xl text-primary'>Please Login</h3>
 
  <form onSubmit={handleSubmit(handleRegister)}>
  
@@ -91,6 +99,10 @@ className="input input-bordered w-full max-w-xs"
 <div>
     <button className='btn btn-outline text-primary input input-bordered w-full max-w-xs' onClick={handleGoogleSignIn}>Sign up with google</button>
 </div>
+
+<ToastContainer
+position="top-center"
+></ToastContainer>
     </div>
     );
 };

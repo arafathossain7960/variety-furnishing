@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { getImageLink } from '../../../../hooks/myhooks';
+import { AuthContext } from '../../../../context/AuthProvider';
+import { ToastContainer, toast } from 'react-toastify';
 
 const AddProducts = () => {
-    const { register, handleSubmit,  formState: { errors } } = useForm();
+    const {user}=useContext(AuthContext);
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const handleAddProduct=(data)=>{
         const formData = new FormData();
+        const date = new Date().toDateString();
         const image = data.productPhoto[0];
         
         formData.append('image', image);
@@ -17,15 +20,49 @@ const AddProducts = () => {
         })
         .then(res => res.json())
         .then(imgData => {
-    
-      console.log(imgData.data.url);
+            const productData ={
+                name:data.productName,
+                image:imgData.data.url,
+                location:data.meetingLocation,
+                productCategory:data.productCategory,
+                yearsOfUsed:data.yearsOfUsed,
+                originalPrice:data.originalPrice,
+                resalePrice:data.resalePrice,
+                description:data.description,
+                sellerName:user?.displayName,
+                sellerEmail:user?.email,
+                postedDate:date,
+                sellerVerified:false,
+
+            } 
+            saveProducts(productData)
   })
+  // save products to mongodb function
+  const saveProducts =(productsData)=>{
+    fetch('http://localhost:5000/addproduct', {
+        method:'POST',
+        headers:{
+            'content-type':'application/json'
+        },
+        body:JSON.stringify(productsData)
+    })
+    .then(res => res.json())
+    .then(data =>{
+        if(data.acknowledged ){
+            toast('Product add success');
+            reset();
+            
+        }
+           
+    })
+
+  }
      
  }
 
     return (
         <div className='mx-auto w-9/12 my-10 text-black shadow border round p-10'>
-        <h3 className='text-center text-2xl text-primary'>Please Sign up</h3>
+        <h3 className='text-center text-2xl text-primary'>Add product</h3>
 
         <form onSubmit={handleSubmit(handleAddProduct)}>
         

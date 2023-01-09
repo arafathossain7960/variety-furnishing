@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { json, Link } from 'react-router-dom';
+import { json, Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 import { accessToken } from '../../../hooks/myhooks';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Register = () => {
-    const {googleSingIn, createUser, updateUser}=useContext(AuthContext);
+    const {googleSingIn, createUser, updateUser, reset}=useContext(AuthContext);
     const { register, handleSubmit,  formState: { errors } } = useForm();
+    const navigate = useNavigate();
 
     const handleRegister =(data)=>{
         const name = data.fullName;
@@ -21,6 +23,7 @@ const Register = () => {
             .then(updateSuccess =>{
                 console.log(updateSuccess)
                 saveUser(userAccountInfo);
+                reset();
             })
             .catch(updateFail =>{
                 console.log(updateFail)
@@ -42,6 +45,7 @@ const Register = () => {
             const email = result.user.email;
             const userAccountInfo = {name, email, accountType:'buyer', role:'', adminVerify:false };
             saveUser(userAccountInfo);
+            
         })
         .catch(error => {
             console.log(error)
@@ -59,8 +63,13 @@ const Register = () => {
         .then(res => res.json())
         .then(data =>{
             if(data.insertedId){
-                alert('user success fully created');
-                accessToken(userInfo.email)
+               
+                accessToken(userInfo.email);
+                toast.success("Sign up complete",{
+                    position:'top-center',
+                    theme: "colored",
+                   })
+                   navigate('/');
             }
                
         })
@@ -156,6 +165,9 @@ const Register = () => {
     <div>
         <button className='btn btn-outline text-primary input input-bordered w-full max-w-xs' onClick={handleGoogleSignIn}>Sign up with google</button>
     </div>
+    <ToastContainer
+    position='top-center'
+    ></ToastContainer>
         </div>
     );
 };
