@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { json, Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
+import { accessToken } from '../../../hooks/myhooks';
 
 const Register = () => {
     const {googleSingIn, createUser, updateUser}=useContext(AuthContext);
@@ -58,7 +59,8 @@ const Register = () => {
         .then(res => res.json())
         .then(data =>{
             if(data.insertedId){
-                alert('user success fully created')
+                alert('user success fully created');
+                accessToken(userInfo.email)
             }
                
         })

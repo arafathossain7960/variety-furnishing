@@ -1,30 +1,29 @@
 import React from 'react';
+import { Link, Outlet } from 'react-router-dom';
 import Navigation from '../pages/SharedPage/Navigation/Navigation';
 
 const DashboardLayout = () => {
     return (
-<div>
- <Navigation></Navigation>
- <div className="drawer drawer-end">
-
-
-  <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-  <div className="drawer-content">
+      <div>
+        <Navigation></Navigation>
+     <div className="drawer drawer-mobile">
+  <input id="dashboard-menu" type="checkbox" className="drawer-toggle" />
+  <div className="drawer-content ">
+    <Outlet></Outlet>
   
-    <label htmlFor="my-drawer-4" className="drawer-button btn btn-primary">Open drawer</label>
+  
   </div> 
-  
   <div className="drawer-side">
-    <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
-    <ul className="menu p-4 w-80 bg-accent text-base-content">
-     
-      <li><a>Sidebar Item 1</a></li>
-      <li><a>Sidebar Item 2</a></li>
+    <label htmlFor="dashboard-menu" className="drawer-overlay"></label> 
+    <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+    
+      <Link to="/dashboard/addproduct">Add product</Link>
+
     </ul>
+  
   </div>
 </div>
-            
-        </div>
+</div>
     );
 };
 

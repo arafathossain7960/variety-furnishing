@@ -1,4 +1,5 @@
 import React from 'react';
+import AddProducts from '../../DashboardPage/SellerDashboard/AddProducts/AddProducts';
 
 const Blogs = () => {
     return (
@@ -9,6 +10,10 @@ const Blogs = () => {
       <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
       <button className="btn btn-primary">Get Started</button>
     </div>
+
+    <AddProducts>
+      
+    </AddProducts>
   </div>
 </div>
     );
