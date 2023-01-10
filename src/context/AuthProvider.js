@@ -6,6 +6,7 @@ const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({children}) => {
     const [user, setUser]=useState({});
+    const [payment, setPayment]=useState(false);
     const auth = getAuth(app);
 
     // google sign in ----------
@@ -38,7 +39,7 @@ const AuthProvider = ({children}) => {
         return ()=>unsubscribe();
 
     },[]);
-    const userAuthInfo ={user, googleSingIn, createUser, loginUser, updateUser,  loginOut };
+    const userAuthInfo ={user,payment, setPayment, googleSingIn, createUser, loginUser, updateUser,  loginOut };
 
     // main component
     return (

@@ -1,7 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const RepoertModal = ({ product, user, setModalData}) => {
-
+         const navigate = useNavigate();
     const handleBookingModal=(e)=>{
         e.preventDefault();
         const form = e.target;
@@ -9,6 +10,8 @@ const RepoertModal = ({ product, user, setModalData}) => {
         const userName = user?.displayName;
         const userEmail = user?.email;
         const productName = product.name;
+        const sellerEmail = product.sellerEmail;
+        const sellerName = product.sellerName;
       
        
         const reportInfo = {
@@ -17,9 +20,24 @@ const RepoertModal = ({ product, user, setModalData}) => {
             productName,
             bookingProductId:product._id,
             report,
+            sellerEmail,
+            sellerName
         }
-console.log(reportInfo)
 
+        fetch('http://localhost:5000/report',{
+            method:'POST',
+            headers:{
+              'content-type':'application/json'
+            },
+            body:JSON.stringify(reportInfo)
+          })
+          .then(res => res.json())
+          .then( data =>{
+            if(data.acknowledged){
+              navigate("/");
+              
+            }
+          })
       setModalData(null);
     }
     return (

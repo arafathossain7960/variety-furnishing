@@ -8,7 +8,10 @@ import Blogs from "../pages/BlogsPage/Blogs/Blogs";
 import AllBuyers from "../pages/DashboardPage/AddminDashborad/AllBuyers/AllBuyers";
 import AllReports from "../pages/DashboardPage/AddminDashborad/AllReports/AllReports";
 import AllSellers from "../pages/DashboardPage/AddminDashborad/AllSellers/AllSellers";
+import MyOrders from "../pages/DashboardPage/BuyerDashboard/MyOrders/MyOrders";
+import Payment from "../pages/DashboardPage/BuyerDashboard/Payment/Payment";
 import AddProducts from "../pages/DashboardPage/SellerDashboard/AddProducts/AddProducts";
+import MyProducts from "../pages/DashboardPage/SellerDashboard/MyProducts/MyProducts";
 import ProductsCategory from "../pages/HomePage/Category/ProductsCategory";
 import Home from "../pages/HomePage/Home/Home";
 
@@ -63,6 +66,18 @@ export const router = createBrowserRouter([
             {
                 path:'/dashboard/allReports',
                 element:<AllReports></AllReports>
+            },
+            {
+                path:'/dashboard/myProducts',
+                element:<MyProducts></MyProducts>
+            },
+            {
+                path:'/dashboard/myOrders',
+                element:<MyOrders></MyOrders>
+            },
+            {
+                path:'/dashboard/payment/:id',
+                element:<Payment></Payment>
             },
 
         ]

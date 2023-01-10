@@ -1,14 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const BookingModal = ({ product, user, setModalData}) => {
-
+  const navigate =useNavigate();
     const handleBookingModal=(e)=>{
         e.preventDefault();
         const form = e.target;
         const userName = user?.displayName;
         const userEmail = user?.email;
-        const productName = form.productName.value;
-        const productPrice = form.price.value;
+        const productName = product.name;
+        const productPrice = product.resalePrice;
         const phone = form.phone.value;
         const location = form.location.value;
        
@@ -19,9 +20,26 @@ const BookingModal = ({ product, user, setModalData}) => {
             productPrice,
             phone,
             location,
-            bookingProductId:product._id
+            bookingProductId:product._id,
+            image:product.image,
+            payment:false,
+          
         }
-console.log(bookingInfo)
+        fetch('http://localhost:5000/bookingInfo',{
+          method:'POST',
+          headers:{
+            'content-type':'application/json'
+          },
+          body:JSON.stringify(bookingInfo)
+        })
+        .then(res => res.json())
+        .then( data =>{
+          if(data.acknowledged){
+            navigate("/dashboard/myOrders");
+            
+          }
+        })
+
 
       setModalData(null);
     }
