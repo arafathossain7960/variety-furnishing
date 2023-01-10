@@ -18,6 +18,9 @@ const DashboardLayout = () => {
     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
     
       <Link to="/dashboard/addproduct">Add product</Link>
+      <Link to="/dashboard/allSellers">All sellers</Link>
+      <Link to="/dashboard/allBuyers">All Buyers</Link>
+      <Link to="/dashboard/allReports">All Reports</Link>
 
     </ul>
   

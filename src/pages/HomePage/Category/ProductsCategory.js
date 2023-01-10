@@ -1,26 +1,53 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import BookingModal from '../../../componets/BookingModal/BookingModal';
+import RepoertModal from '../../../componets/ReportModal/RepoertModal';
+import { AuthContext } from '../../../context/AuthProvider';
+import ProductDetails from './ProductDetails';
 
 const ProductsCategory = () => {
+  const [modalData, setModalData]=useState(null);
+    const {user}=useContext(AuthContext);
     const products = useLoaderData();
+
   
     return (
         <div className='px-6 py-12 '>
             {
-                products.map(product =><div className="card lg:card-side my-8 bg-base-100 shadow-xl">
-                <figure><img src="https://placeimg.com/400/400/arch" alt="Album"/></figure>
-                <div className="card-body">
-                  <h2 className="card-title">New album is released!</h2>
-                  <p>Click the button to listen on Spotiwhy app.</p>
-                  <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Listen</button>
-                  </div>
-                </div>
-              </div>)
+                products.map(product =><ProductDetails
+                    key={product._id}
+                    product={product}
+                    setModalData={setModalData}
+                
+                >
+                </ProductDetails>)
             }
             
+          <div>
+          { 
+          modalData && 
+          <BookingModal
+              
+              user={user}
+              product={modalData}
+              setModalData={setModalData}
+              ></BookingModal> }
+
+              {
+                modalData&&
+                <RepoertModal
+                user={user}
+                product={modalData}
+                setModalData={setModalData}
+                ></RepoertModal>
+              }
+          </div>
         </div>
     );
 };
 
 export default ProductsCategory;
+
+
+
+

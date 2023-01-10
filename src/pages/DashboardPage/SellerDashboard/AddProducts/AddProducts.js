@@ -22,6 +22,7 @@ const AddProducts = () => {
         .then(res => res.json())
         .then(imgData => {
             const productData ={
+                
                 name:data.productName,
                 image:imgData.data.url,
                 location:data.meetingLocation,
