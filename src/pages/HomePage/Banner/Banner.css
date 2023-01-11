@@ -1,0 +1,17 @@
+.banner{
+    position: absolute;
+    transition: 0.9s;
+}
+.hoverImg{
+    position: absolute;
+
+top: 0;
+
+left: 0;
+
+display: none;
+transition: 0.9s;
+}
+.banner:hover .hoverImg{
+    display: inline;
+}

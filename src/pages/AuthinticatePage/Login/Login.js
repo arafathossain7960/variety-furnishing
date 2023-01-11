@@ -1,34 +1,41 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../../context/AuthProvider';
+import { accessToken } from '../../../hooks/myhooks';
 
 const Login = () => {
     const {loginUser, googleSingIn }=useContext(AuthContext);
     const { register, handleSubmit,  reset,  formState: { errors } } = useForm();
-  
+  const location = useLocation();
+  const navigate = useNavigate();
+    const from = location.state?.from?.pathname || "/";
+
   // login function
-  const handleRegister =(data)=>{
+  const handleLogInUser =(data)=>{
       const email = data.email;
       const password = data.password;
 
 loginUser(email, password)
     .then(result =>{
-        console.log(result)
+        console.log(result);
+        accessToken(email);
     })
     .catch(error =>{
         toast('Login failed');
     })
-   
+    
     reset();
+    navigate(from, { replace: true });
 }
      // google handler
      const handleGoogleSignIn =()=>{
         googleSingIn()
         .then(result =>{
             console.log(result)
+            accessToken(result.user.email)
         })
         .catch(error => {
            toast.error("Login failed",{
@@ -44,7 +51,7 @@ loginUser(email, password)
         <div className='mx-auto w-96 my-10 text-black shadow border round p-10'>
         <h3 className='text-center text-2xl text-primary'>Please Login</h3>
 
- <form onSubmit={handleSubmit(handleRegister)}>
+ <form onSubmit={handleSubmit(handleLogInUser)}>
  
  
 

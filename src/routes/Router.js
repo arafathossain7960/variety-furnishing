@@ -2,7 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../Layout/DashboardLayout";
 import MainLayout from "../Layout/MainLayout";
 import NotFound from "../NotFound/NotFound";
+import AdminRoute from "../pages/AuthinticatePage/AdminRoute/AdminRoute";
 import Login from "../pages/AuthinticatePage/Login/Login";
+import PrivetRoute from "../pages/AuthinticatePage/PrivetRoute/PrivetRoute";
 import Register from "../pages/AuthinticatePage/Register/Register";
 import Blogs from "../pages/BlogsPage/Blogs/Blogs";
 import AllBuyers from "../pages/DashboardPage/AddminDashborad/AllBuyers/AllBuyers";
@@ -29,7 +31,7 @@ export const router = createBrowserRouter([
                 loader:({params})=>{
                     return fetch(`http://localhost:5000/products?category=${params.categoryName}`)
                 },
-                element:<ProductsCategory></ProductsCategory>
+                element:<PrivetRoute><ProductsCategory></ProductsCategory></PrivetRoute>
             },
            
             {
@@ -48,7 +50,7 @@ export const router = createBrowserRouter([
     },
     {
         path:'/dashboard',
-        element:<DashboardLayout></DashboardLayout>,
+        element:<PrivetRoute><DashboardLayout></DashboardLayout></PrivetRoute>,
         children:[
            
             {
@@ -65,7 +67,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/dashboard/allReports',
-                element:<AllReports></AllReports>
+                element:<AdminRoute><AllReports></AllReports></AdminRoute>
             },
             {
                 path:'/dashboard/myProducts',

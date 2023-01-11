@@ -7,7 +7,11 @@ const MyOrders = () => {
     const {user, payment, setBooking}=useContext(AuthContext);
     const {data: myOrders, isLoading, refetch}=useQuery({
         queryKey:['myOrders'],
-        queryFn:()=>fetch(`http://localhost:5000/bookingInfo?email=${user?.email}`).then(res => res.json())
+        queryFn:()=>fetch(`http://localhost:5000/bookingInfo?email=${user?.email}`,{
+            headers:{
+                authorization:`bearer ${localStorage.getItem('accessToken')}`
+            }
+        }).then(res => res.json())
         
     })
    
