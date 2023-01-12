@@ -51,7 +51,7 @@ const RepoertModal = ({ product, user, setModalData}) => {
   
   
     <div>
-        <h3 className='text-center text-primary text-2xl'>Write your Report/Sugetion to Admin</h3>
+        <h3 className='text-center text-primary my-8 text-2xl'>Write your Report/Comment to Admin</h3>
         <form onSubmit={handleBookingModal} action="">
             
             <textarea  className='input w-full mb-2' required name='report'  type="text"  placeholder='Enter your meeting location' />

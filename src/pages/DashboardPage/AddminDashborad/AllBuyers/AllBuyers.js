@@ -52,9 +52,9 @@ const AllBuyers = () => {
         <div className='my-16 mx-10'>
             <div className='text-center my-10 text-2xl text-primary'><h3>Buyers and Admin collections</h3></div>
         <div className="overflow-x-auto">
-        <table className="table table-compact w-full">
+        <table className="table table-compact text-lg text-accent w-full">
             <thead>
-            <tr>
+            <tr className='text-primary text-xl'>
               
                 <th>id</th> 
                 <th>Name</th> 

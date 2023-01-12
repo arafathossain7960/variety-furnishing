@@ -3,10 +3,10 @@ import React from 'react';
 const ProductDetails = ({product, setModalData}) => {
     return (
         <div>
-            <div className="card lg:card-side h-96 my-8 bg-base-100  shadow-xl">
+            <div className="card lg:card-side  my-8 bg-base-100  shadow-xl">
                 <figure><img className='w-9/12 ' src={product.image} alt="Album"/></figure>
-                <div className="card-body">
-                  <h3>{product.name}</h3>
+                <div className="card-body text-accent text-lg">
+                  <h3 className='text-primary text-2xl'>{product.name}</h3>
                   <p>{product.productCategory}</p>
                   <p><span><b>Original Price $</b>{product.originalPrice} </span> <span><b>Resale Price $</b>{product.resalePrice} </span></p>
                   <p><span><b>Years of used :</b>{product.yearsOfUsed} </span> <span><b>Posted time : </b>{product.postedDate} </span></p>
@@ -22,12 +22,11 @@ const ProductDetails = ({product, setModalData}) => {
                   seller verified
                   </p>
                   }
-                  <div className="card-actions justify-center">
+                  <div className="card-actions  justify-center">
                   <label onClick={()=>setModalData(product)} htmlFor="bookingModal" className="btn btn-primary">Book Now</label>
 
-                  </div>
-                  <div className="card-actions justify-center">
-                  <label onClick={()=>setModalData(product)} htmlFor="reportModal" className="btn btn-primary">Report to admin</label>
+                 
+                  <label onClick={()=>setModalData(product)} htmlFor="reportModal" className="btn btn-outline">Report to admin</label>
 
                   </div>
                 </div>

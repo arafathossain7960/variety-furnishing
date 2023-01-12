@@ -53,37 +53,37 @@ const DashboardLayout = () => {
         <Navigation></Navigation>
      <div className="drawer drawer-mobile">
   <input id="dashboard-menu" type="checkbox" className="drawer-toggle" />
-  <div className="drawer-content ">
+  <div className="drawer-content  ">
     <Outlet></Outlet>
   
   
   </div> 
-  <div className="drawer-side">
+  <div className="drawer-side text-center text-accent">
     <label htmlFor="dashboard-menu" className="drawer-overlay"></label> 
-    <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+    <ul className="menu p-4 w-72 bg-base-100 text-base-content">
   
    
 
     {
       isdAmin && 
       <>
-      <Link to="/dashboard/addproduct">Add product</Link>
-      <Link to="/dashboard/myProducts">My Products</Link>
-      <Link to="/dashboard/myOrders">My Orders</Link>
-      <Link to="/dashboard/allReports">All Reports</Link>
-      <Link to="/dashboard/allSellers">All sellers</Link>
-      <Link to="/dashboard/allBuyers">All Buyers</Link>
+     <Link className="py-2 px-4 my-2 bg-secondary rounded text-primary text-lg" to="/dashboard/addproduct">Add product</Link>
+     <Link className="py-2 px-4 my-2 bg-secondary rounded text-primary text-lg" to="/dashboard/myProducts">My Products</Link>
+     <Link className="py-2 px-4 my-2 bg-secondary rounded text-primary text-lg" to="/dashboard/myOrders">My Orders</Link>
+     <Link className="py-2 px-4 my-2 bg-secondary rounded text-primary text-lg" to="/dashboard/allReports">All Reports</Link>
+     <Link className="py-2 px-4 my-2 bg-secondary rounded text-primary text-lg" to="/dashboard/allSellers">All sellers</Link>
+     <Link className="py-2 px-4 my-2 bg-secondary rounded text-primary text-lg" to="/dashboard/allBuyers">All Buyers</Link>
    </>
     }
     {
       isSeller===true && isdAmin===false ?
       <>
-      <Link to="/dashboard/addproduct">Add product</Link>
-      <Link to="/dashboard/myProducts">My Products</Link>
-      <Link to="/dashboard/myOrders">My Orders</Link>
+     <Link className="py-2 px-4 my-2 bg-secondary rounded text-primary text-lg" to="/dashboard/addproduct">Add product</Link>
+     <Link className="py-2 px-4 my-2 bg-secondary rounded text-primary text-lg" to="/dashboard/myProducts">My Products</Link>
+     <Link className="py-2 px-4 my-2 bg-secondary rounded text-primary text-lg" to="/dashboard/myOrders">My Orders</Link>
       </>
       :
-      <Link to="/dashboard/myOrders">My Orders</Link>
+     <Link className="py-2 px-4 my-2 bg-secondary rounded text-primary text-lg" to="/dashboard/myOrders">My Orders</Link>
     }
     
     
@@ -94,9 +94,9 @@ const DashboardLayout = () => {
       
        <>
      
-      {/* <Link to="/dashboard/myProducts">My Products</Link>
-      <Link to="/dashboard/addproduct">Add product</Link>
-      <Link to="/dashboard/myOrders">My Orders</Link> */}
+      {/*<Link className="py-2 px-4 my-2 bg-secondary rounded text-primary text-lg" to="/dashboard/myProducts">My Products</Link>
+     <Link className="py-2 px-4 my-2 bg-secondary rounded text-primary text-lg" to="/dashboard/addproduct">Add product</Link>
+     <Link className="py-2 px-4 my-2 bg-secondary rounded text-primary text-lg" to="/dashboard/myOrders">My Orders</Link> */}
       </>
       
    

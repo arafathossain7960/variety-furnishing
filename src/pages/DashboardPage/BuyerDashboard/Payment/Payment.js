@@ -38,11 +38,11 @@ const navigate =useNavigate();
       <div className="card-body">
         <div className="form-control">
         
-          <input type="text" placeholder="Credit card number" className="input input-bordered" />
+          <input type="text" name='number' required placeholder="Credit card number" className="input input-bordered" />
         </div>
         <div className="form-control">
           
-          <input type="text" placeholder="password" className="input input-bordered" />
+          <input type="text" name='password' required placeholder="password" className="input input-bordered" />
         
         </div>
         <div className="form-control mt-6">

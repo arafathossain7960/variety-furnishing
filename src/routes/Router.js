@@ -10,6 +10,7 @@ import Blogs from "../pages/BlogsPage/Blogs/Blogs";
 import AllBuyers from "../pages/DashboardPage/AddminDashborad/AllBuyers/AllBuyers";
 import AllReports from "../pages/DashboardPage/AddminDashborad/AllReports/AllReports";
 import AllSellers from "../pages/DashboardPage/AddminDashborad/AllSellers/AllSellers";
+import Dashborad from "../pages/DashboardPage/AddminDashborad/Dashboard/Dashborad";
 import MyOrders from "../pages/DashboardPage/BuyerDashboard/MyOrders/MyOrders";
 import Payment from "../pages/DashboardPage/BuyerDashboard/Payment/Payment";
 import AddProducts from "../pages/DashboardPage/SellerDashboard/AddProducts/AddProducts";
@@ -52,7 +53,10 @@ export const router = createBrowserRouter([
         path:'/dashboard',
         element:<PrivetRoute><DashboardLayout></DashboardLayout></PrivetRoute>,
         children:[
-           
+           {
+            path:'/dashboard',
+            element:<Dashborad></Dashborad>
+           },
             {
                 path:'/dashboard/addproduct',
                 element:<AddProducts></AddProducts>
