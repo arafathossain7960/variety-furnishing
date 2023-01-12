@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../context/AuthProvider';
 import Advertise from '../Advertise/Advertise';
 import Banner from '../Banner/Banner';
 import Category from '../Category/Category';
-import HomeNewProducts from '../HomeNewProducts/HomeNewProducts';
-import HomeProducts from '../HomeProducts/HomeProducts';
+
 
 const Home = () => {
+    const {advertise}=useContext(AuthContext);
     return (
         <div>
             <Banner></Banner>
             <Category></Category>
-            <HomeProducts></HomeProducts>
-            <HomeNewProducts></HomeNewProducts>
+            {
+                advertise &&
+                <Advertise
+            advertise={advertise}
+            ></Advertise>
+            }
+            
         </div>
     );
 };

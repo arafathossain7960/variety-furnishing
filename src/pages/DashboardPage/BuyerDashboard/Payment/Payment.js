@@ -28,9 +28,31 @@ const navigate =useNavigate();
 
     return (
         <div>
-            <h1>total price :</h1>
-            <h1>Hello i am the payment</h1>
-            <button className='btn btn-secondary' onClick={()=>handlePayment(id.id)} >paid</button>
+           <div className="hero min-h-screen bg-accent text-dark">
+  <div className="hero-content flex-col lg:flex-row-reverse">
+    <div className="text-center lg:text-left">
+      <h1 className="text-5xl font-bold">Payment placement</h1>
+      <p className="py-6"> Your credit cart information and password will protected, don't worry about the security.</p>
+    </div>
+    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+      <div className="card-body">
+        <div className="form-control">
+        
+          <input type="text" placeholder="Credit card number" className="input input-bordered" />
+        </div>
+        <div className="form-control">
+          
+          <input type="text" placeholder="password" className="input input-bordered" />
+        
+        </div>
+        <div className="form-control mt-6">
+          <button onClick={()=>handlePayment(id.id)}  className="btn btn-primary">Pay Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+            
             
         <ToastContainer
         position='top-center'

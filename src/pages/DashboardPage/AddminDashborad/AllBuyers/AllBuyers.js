@@ -1,25 +1,67 @@
 import React, { useEffect, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 
 const AllBuyers = () => {
     const [buyers, setBuyers]=useState([]);
+    const [makeAdmin, setMakeAdmin]=useState('');
     useEffect(()=>{
         fetch('http://localhost:5000/buyers')
         .then(res => res.json())
         .then(data => setBuyers(data))
-    },[])
+    },[]);
+
+    const handleByersDelete =(id)=>{
+  
+        fetch(`http://localhost:5000/user/${id}`,{
+            method:'DELETE'
+        })
+        .then(res => res.json())
+        .then(data =>{
+            if(data){
+                toast.success("user delete",{
+                    position:'top-center',
+                    theme: "colored",
+                   })
+            }
+        })
+        
+    
+
+
+}
+    const handleMakeAdmin =(id)=>{
+  
+        fetch(`http://localhost:5000/user/admin/${id}`,{
+            method:'PUT'
+        })
+        .then(res => res.json())
+        .then(data =>{
+            if(data){
+                toast.success("User admin",{
+                    position:'top-center',
+                    theme: "colored",
+                   })
+            }
+        })
+        
+    
+
+
+}
     return (
         <div className='my-16 mx-10'>
+            <div className='text-center my-10 text-2xl text-primary'><h3>Buyers and Admin collections</h3></div>
         <div className="overflow-x-auto">
         <table className="table table-compact w-full">
             <thead>
             <tr>
-                <th></th> 
+              
+                <th>id</th> 
                 <th>Name</th> 
-                <th>Job</th> 
-                <th>company</th> 
-                <th>location</th> 
-                <th>Last Login</th> 
-                <th>Favorite Color</th>
+                <th>Email</th> 
+                <th>Admin</th> 
+                <th>delete</th> 
+                
             </tr>
             </thead> 
             <tbody>
@@ -27,11 +69,26 @@ const AllBuyers = () => {
                     buyers.map((buyer, i) =><tr key={buyer._id}>
                         <th>{i+1}</th> 
                         <td>{buyer.name}</td> 
-                        <td>{buyer.email}</td> 
-                        <td></td> 
-                        <td>Canada</td> 
-                        <td>12/16/2020</td> 
-                        <td>Blue</td>
+                        <td>{buyer.email}</td>
+                        <td>
+                            {
+                                buyer.role==='admin'? <p>Admin</p>:
+                                <button
+                            onClick={()=>handleMakeAdmin(buyer._id)}
+                            className='btn btn-sm'>
+                            Make admin
+                            </button>
+                            }
+                            </td>  
+                        <td>
+                            <button
+                            onClick={()=>handleByersDelete(buyer._id)}
+                            className='btn btn-sm'>
+                                Delete
+                            </button>
+                            </td> 
+                      
+                      
                     </tr>)
                 }
             
@@ -40,6 +97,9 @@ const AllBuyers = () => {
         
         </table>
         </div>
+        <ToastContainer
+        position='top-center'
+        ></ToastContainer>
     </div>
     );
 };

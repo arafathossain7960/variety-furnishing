@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 // for jwt access token------
 export const accessToken =(email)=>{
   fetch(`http://localhost:5000/jwt?email=${email}`,{
@@ -34,4 +36,21 @@ export const getImageLink =(image)=>{
  
 return imageLink;
 }
+
+// export const useAminRoute =(email)=>{
+//   const [isdAmin, setIsAdmin]=useState('');
+ 
+//   if(email){
+//     fetch(`http://localhost:5000/user/admin/${email}`)
+//     .then(res => res.json())
+//     .then(data =>{
+//         if(data){
+//             setIsAdmin(data.isAdmin)
+
+//         }
+//     })
+//   }
+
+//   return [isdAmin];
+// }
 

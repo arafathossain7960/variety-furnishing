@@ -3,15 +3,22 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../../../context/AuthProvider';
 
 const MyProducts = () => {
-    const {user}=useContext(AuthContext);
+    const {user, setAdvertise}=useContext(AuthContext);
   
     const {data:myProducts}=useQuery({
         queryKey:['myProducts', user?.email],
         queryFn:()=>fetch(`http://localhost:5000/myProducts?sellerEmail=${user?.email}`).then(res => res.json())
     })
+
+    const handleAdvertisement =(id)=>{
+        fetch(`http://localhost:5000/products/advertise/${id}`)
+        .then(res => res.json())
+        .then(data => setAdvertise(data));
+    }
    
     return (
         <div className='my-16 mx-10'>
+             <div className='text-center my-10 text-2xl text-primary'><h3>Products  collections</h3></div>
         <div className="overflow-x-auto">
         <table className="table table-compact w-full">
             <thead>
@@ -33,7 +40,9 @@ const MyProducts = () => {
                         <td>{myProduct.resalePrice}</td> 
                         <td>Sold</td> 
                         <td>
-                            <button className='btn btn-sm btn-secondary'>Advertise</button>
+                            <button
+                            onClick={()=> handleAdvertisement(myProduct._id)}
+                            className='btn btn-sm btn-secondary'>Advertise</button>
                         </td>
                         <td><button
                         className='btn btn-sm btn-warning'

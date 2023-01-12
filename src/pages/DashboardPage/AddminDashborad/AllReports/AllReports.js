@@ -12,7 +12,7 @@ const AllReports = () => {
     console.log(reports)
     return (
         <div>
-            <h3>I am the reports</h3>
+             <div className='text-center my-10 text-2xl text-primary'><h3>All reports collections</h3></div>
             {
                 reports?.map((report, i) => <div key={report._id} className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
@@ -26,6 +26,7 @@ const AllReports = () => {
                 </div>
               </div>)
             }
+
         </div>
     );
 };

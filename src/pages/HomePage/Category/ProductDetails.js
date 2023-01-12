@@ -13,9 +13,15 @@ const ProductDetails = ({product, setModalData}) => {
                   <p><b>Description: </b> {product.description}</p>
                   <p>Meeting location {product.location}</p>
                   <p>seller {product.sellerName}</p>
-                  <p>   <input type="checkbox" checked className="checkbox checkbox-success mr-6" /> 
+                  
+                  
+
+                  {
+                   product.sellerVerified===true &&
+                    <p>   <input type="checkbox" checked className="checkbox checkbox-success mr-6" /> 
                   seller verified
                   </p>
+                  }
                   <div className="card-actions justify-center">
                   <label onClick={()=>setModalData(product)} htmlFor="bookingModal" className="btn btn-primary">Book Now</label>
 

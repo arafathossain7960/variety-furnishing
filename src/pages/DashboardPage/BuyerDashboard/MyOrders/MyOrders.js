@@ -14,9 +14,14 @@ const MyOrders = () => {
         }).then(res => res.json())
         
     })
+    // if(myOrders.length=== 0){
+
+    // }
    
     return (
      <div>
+        <div className='text-center my-10 text-2xl text-primary'><h3> 
+            All orders collections</h3></div>
         
         {
             myOrders?.map(myOrder =><div key={myOrder._id} className="card w-1/2 bg-base-100 shadow-xl">
@@ -40,7 +45,6 @@ const MyOrders = () => {
            
           </div>)
         }
-
       
      </div>
     );

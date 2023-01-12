@@ -1,15 +1,53 @@
-import React, { useContext } from 'react';
+import { isAdmin } from '@firebase/util';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import Loading from '../componets/Loading/Loading';
 import { AuthContext } from '../context/AuthProvider';
+import { useAminRoute } from '../hooks/myhooks';
 import useAdmin from '../hooks/useAdmin';
 import useSeller from '../hooks/useSeller';
 import Navigation from '../pages/SharedPage/Navigation/Navigation';
 
 const DashboardLayout = () => {
-  const {user}=useContext(AuthContext);
+  const [isSeller, setIsSeller]=useState(null);
+  const [isdAmin, setIsAdmin]=useState(false);
+  const {user, loading}=useContext(AuthContext);
+  if(loading){
+    <Loading></Loading>
+  }
+
+  useEffect(()=>{
+      if(user){
+          fetch(`http://localhost:5000/user/seller/${user?.email}`)
+          .then(res => res.json())
+          .then(data =>{
+              if(data){
+                  setIsSeller(data.isSeller)
+  
+              }
+          })
+      }
+    
+  },[user?.email])
  
-  const [isAdmin]=useAdmin(user?.email);
-  const [isSeller]=useSeller(user?.email)
+  
+  
+  useEffect(()=>{
+      if(user?.email){
+          fetch(`http://localhost:5000/user/admin/${user?.email}`)
+          .then(res => res.json())
+          .then(data =>{
+              if(data){
+                  setIsAdmin(data.isAdmin)
+  
+              }
+          })
+      }
+    
+  },[user?.email])
+
+
+
     return (
       <div>
         <Navigation></Navigation>
@@ -26,32 +64,45 @@ const DashboardLayout = () => {
   
    
 
-    
     {
-      isSeller &&
+      isdAmin && 
       <>
       <Link to="/dashboard/addproduct">Add product</Link>
       <Link to="/dashboard/myProducts">My Products</Link>
       <Link to="/dashboard/myOrders">My Orders</Link>
-      
-      </>
-    }
-      
-      
-      {isAdmin &&
-       <>
-       <Link to="/dashboard/allReports">All Reports</Link>
+      <Link to="/dashboard/allReports">All Reports</Link>
       <Link to="/dashboard/allSellers">All sellers</Link>
       <Link to="/dashboard/allBuyers">All Buyers</Link>
+   </>
+    }
+    {
+      isSeller===true && isdAmin===false ?
+      <>
+      <Link to="/dashboard/addproduct">Add product</Link>
+      <Link to="/dashboard/myProducts">My Products</Link>
+      <Link to="/dashboard/myOrders">My Orders</Link>
+      </>
+      :
+      <Link to="/dashboard/myOrders">My Orders</Link>
+    }
+    
+    
+     
+
+      
+      
+      
+       <>
+     
       {/* <Link to="/dashboard/myProducts">My Products</Link>
       <Link to="/dashboard/addproduct">Add product</Link>
       <Link to="/dashboard/myOrders">My Orders</Link> */}
       </>
-      }
-       {
-        !isAdmin && !isSeller&&
-        <Link to="/dashboard/myOrders">My Orders</Link>
-       }
+      
+   
+        
+       
+      
 
     </ul>
   

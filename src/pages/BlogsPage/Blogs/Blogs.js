@@ -10,30 +10,37 @@ const Blogs = () => {
 
       </div>
       <div className="blog">
-       <h4 className="text-xl text-accent bold my-2" > Difference between SQL and NoSQL?</h4>
-       <p className="text-lg my-4"><b>Answer : </b> The five critical differences between SQL vs NoSQL are:</p>
+       <h4 className="text-xl text-accent bold my-2" > What are the different ways to manage a state in a React application?</h4>
+       <p className="text-lg my-4"><b>Answer : </b> There are several  ways to manage state​s in React, for example</p>
        <ol>
-          <li>SQL databases are relational, NoSQL databases are non-relational.</li>
-          <li>SQL databases use structured query language and have a predefined schema. NoSQL databases have dynamic schemas for unstructured data.</li>
-          <li>SQL databases are vertically scalable, while NoSQL databases are horizontally scalable.</li>
-          <li>SQL databases are table-based, while NoSQL databases are document, key-value, graph, or wide-column stores.</li>
-          <li>SQL databases are better for multi-row transactions, while NoSQL is better for unstructured data like documents or JSON.</li>
+          <li>React Hooks</li>
+          <li>React context API</li>
+          <li>React Higher order component</li>
+          <li>Apollo Link State</li>
        </ol>
       </div>
       <div className="blog">
-       <h4 className="text-xl text-accent bold my-2" >What is JWT, and how does it work??</h4>
-       <p className="text-lg my-4"><b>Answer : </b>JSON Web Token (JWT) is an open standard security system, that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. <br /> Although JWTs can be encrypted to also provide secrecy between parties, we will focus on signed tokens. Signed tokens can verify the integrity of the claims contained within it, while encrypted tokens hide those claims from other parties. When tokens are signed using public/private key pairs, the signature also certifies that only the party holding the private key is the one that signed it.
+       <h4 className="text-xl text-accent bold my-2" >How does prototypical inheritance work?</h4>
+       <p className="text-lg my-4"><b>Answer : </b>The prototype or prototypical Inheritance is a building method in JavaScript,This feature basically used in javascript to add methods and properties in objects.
+       <br /> It is a method by which an object can inherit the properties and methods of another object. Traditionally, in order to get and set the  of an object,
+       <br /> we use Object. getPrototypeOf and Object. Prototypical Inheritance makes life easy for developer and removed re-write code.
         </p>
       </div>
       <div className="blog">
-       <h4 className="text-xl text-accent bold my-2" >What is the difference between javascript and NodeJS?</h4>
-       <p className="text-lg my-4"><b>Answer : </b> JavaScript is a simple programming language that can be used with any browser that has the JavaScript Engine installed. Node. js, on the other hand, is an interpreter or execution environment for the JavaScript programming language.</p>
+       <h4 className="text-xl text-accent bold my-2" >What is a unit test? Why should we write unit tests?</h4>
+       <p className="text-lg my-4"><b>Answer : </b> Unit test is a software testing method. <br />
+       Developers write unit tests for their code to make sure that the code works correctly. usually A unit test is a test of the correctness of an individual code module, for example, a test of a method or class. Typically, developers create unit tests for their code as they develop it.
+       <br />
+       For Test-Driven Development (TDD), you write unit tests before writing any implementation. This makes your implementation details in your code shorter and easier to understand. In this instance, the best time to write unit tests is immediately. For others, most developers write unit tests after the code's been written.
+        </p>
       </div>
       <div className="blog">
-       <h4 className="text-xl text-accent bold my-2" >How does NodeJS handle multiple requests at the same time?</h4>
-       <p className="text-lg my-4"><b>Answer : </b>ultiple clients make multiple requests to the NodeJS server. NodeJS receives these requests and places them into the EventQueue . NodeJS server has an internal component referred to as the EventLoop which is an infinite loop that receives requests and processes them. This EventLoop is single threaded.
+       <h4 className="text-xl text-accent bold my-2" >React vs. Angular vs. Vue?</h4>
+       <p className="text-lg my-4"><b>Answer : </b> React.js, Angular.js and Vue.js these all are JavaScript libraries.
        <br />
-       it is highly scalable, lightweight, fast, and data-intensive.
+       If we are measuring the popularity, According to a survey by Stack Overflow 40.13% of the developers believe that React is the most commonly used JavaScript Framework. Angular and Vue follow it with 22.96% and 18.97%, respectively. 
+       <br />
+       you can chose any of these libraries for your next project, don't worry these all are good.
         </p>
       </div>
 
