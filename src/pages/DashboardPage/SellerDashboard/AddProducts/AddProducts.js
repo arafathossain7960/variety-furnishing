@@ -41,7 +41,7 @@ const AddProducts = () => {
   })
   // save products to mongodb function
   const saveProducts =(productsData)=>{
-    fetch('http://localhost:5000/addproduct', {
+    fetch('https://variety-furnishing-server-site.vercel.app/addproduct', {
         method:'POST',
         headers:{
             'content-type':'application/json'

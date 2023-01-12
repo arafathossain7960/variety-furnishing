@@ -24,7 +24,7 @@ const RepoertModal = ({ product, user, setModalData}) => {
             sellerName
         }
 
-        fetch('http://localhost:5000/report',{
+        fetch('https://variety-furnishing-server-site.vercel.app/report',{
             method:'POST',
             headers:{
               'content-type':'application/json'

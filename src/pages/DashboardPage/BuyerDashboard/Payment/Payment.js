@@ -8,7 +8,7 @@ const Payment = () => {
 const navigate =useNavigate();
 
  const handlePayment =(id)=>{
-    fetch(`http://localhost:5000/bookingInfo?id=${id}`,{
+    fetch(`https://variety-furnishing-server-site.vercel.app/bookingInfo?id=${id}`,{
         method:'PUT'
 
     })

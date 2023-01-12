@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
             {
                 path:'/category/:categoryName',
                 loader:({params})=>{
-                    return fetch(`http://localhost:5000/products?category=${params.categoryName}`)
+                    return fetch(`https://variety-furnishing-server-site.vercel.app/products?category=${params.categoryName}`)
                 },
                 element:<PrivetRoute><ProductsCategory></ProductsCategory></PrivetRoute>
             },

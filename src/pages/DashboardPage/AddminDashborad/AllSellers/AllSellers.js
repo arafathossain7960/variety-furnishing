@@ -9,7 +9,7 @@ const AllSellers = () => {
     const [sellers, setSellers]=useState([]);
     const [sellerVerify, setSellerVerify]=useState({});
     useEffect(()=>{
-        fetch('http://localhost:5000/sellers')
+        fetch('https://variety-furnishing-server-site.vercel.app/sellers')
         .then(res => res.json())
         .then(data => setSellers(data))
     },[user.email]);
@@ -17,7 +17,7 @@ const AllSellers = () => {
     // delete function
   const handleSellerDelete =(id)=>{
   
-            fetch(`http://localhost:5000/user/${id}`,{
+            fetch(`https://variety-furnishing-server-site.vercel.app/user/${id}`,{
                 method:'DELETE'
             })
             .then(res => res.json())
@@ -37,7 +37,7 @@ const AllSellers = () => {
   }
   const handleSellerVerified =(email)=>{
   
-            fetch(`http://localhost:5000/user/verify/${email}`,{
+            fetch(`https://variety-furnishing-server-site.vercel.app/user/verify/${email}`,{
                 method:'PUT'
             })
             .then(res => res.json())

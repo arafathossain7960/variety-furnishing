@@ -10,7 +10,7 @@ const MyProducts = () => {
   
     const {data:myProducts}=useQuery({
         queryKey:['myProducts', user?.email],
-        queryFn:()=>fetch(`http://localhost:5000/myProducts?sellerEmail=${user?.email}`).then(res => res.json())
+        queryFn:()=>fetch(`https://variety-furnishing-server-site.vercel.app/myProducts?sellerEmail=${user?.email}`).then(res => res.json())
     })
 
     if(loading){
@@ -18,14 +18,14 @@ const MyProducts = () => {
       }
 // handle advertisement 
     const handleAdvertisement =(id)=>{
-        fetch(`http://localhost:5000/products/advertise/${id}`)
+        fetch(`https://variety-furnishing-server-site.vercel.app/products/advertise/${id}`)
         .then(res => res.json())
         .then(data => setAdvertise(data));
     }
 
     // handle my product delete
     const handleProductDelete =id=>{
-        fetch(`http://localhost:5000/myProducts/delete/${id}`,{
+        fetch(`https://variety-furnishing-server-site.vercel.app/myProducts/delete/${id}`,{
             method:'DELETE'
         })
         .then(res => res.json())

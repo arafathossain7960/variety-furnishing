@@ -5,14 +5,14 @@ const AllBuyers = () => {
     const [buyers, setBuyers]=useState([]);
     const [makeAdmin, setMakeAdmin]=useState('');
     useEffect(()=>{
-        fetch('http://localhost:5000/buyers')
+        fetch('https://variety-furnishing-server-site.vercel.app/buyers')
         .then(res => res.json())
         .then(data => setBuyers(data))
     },[]);
 
     const handleByersDelete =(id)=>{
   
-        fetch(`http://localhost:5000/user/${id}`,{
+        fetch(`https://variety-furnishing-server-site.vercel.app/user/${id}`,{
             method:'DELETE'
         })
         .then(res => res.json())
@@ -31,7 +31,7 @@ const AllBuyers = () => {
 }
     const handleMakeAdmin =(id)=>{
   
-        fetch(`http://localhost:5000/user/admin/${id}`,{
+        fetch(`https://variety-furnishing-server-site.vercel.app/user/admin/${id}`,{
             method:'PUT'
         })
         .then(res => res.json())

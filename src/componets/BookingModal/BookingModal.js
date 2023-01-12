@@ -25,7 +25,7 @@ const BookingModal = ({ product, user, setModalData}) => {
             payment:false,
           
         }
-        fetch('http://localhost:5000/bookingInfo',{
+        fetch('https://variety-furnishing-server-site.vercel.app/bookingInfo',{
           method:'POST',
           headers:{
             'content-type':'application/json'

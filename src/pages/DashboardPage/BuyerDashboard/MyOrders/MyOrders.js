@@ -7,7 +7,7 @@ const MyOrders = () => {
     const {user, payment, setBooking}=useContext(AuthContext);
     const {data: myOrders, isLoading, refetch}=useQuery({
         queryKey:['myOrders'],
-        queryFn:()=>fetch(`http://localhost:5000/bookingInfo?email=${user?.email}`,{
+        queryFn:()=>fetch(`https://variety-furnishing-server-site.vercel.app/bookingInfo?email=${user?.email}`,{
             headers:{
                 authorization:`bearer ${localStorage.getItem('accessToken')}`
             }

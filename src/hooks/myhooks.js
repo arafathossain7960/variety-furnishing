@@ -2,7 +2,7 @@ import { useState } from "react";
 
 // for jwt access token------
 export const accessToken =(email)=>{
-  fetch(`http://localhost:5000/jwt?email=${email}`,{
+  fetch(`https://variety-furnishing-server-site.vercel.app/jwt?email=${email}`,{
    
   })
   .then(res => res.json())
@@ -41,7 +41,7 @@ return imageLink;
 //   const [isdAmin, setIsAdmin]=useState('');
  
 //   if(email){
-//     fetch(`http://localhost:5000/user/admin/${email}`)
+//     fetch(`https://variety-furnishing-server-site.vercel.app/user/admin/${email}`)
 //     .then(res => res.json())
 //     .then(data =>{
 //         if(data){

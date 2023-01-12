@@ -6,7 +6,7 @@
   
 //     useEffect(()=>{
 //         if(email){
-//             fetch(`http://localhost:5000/user/admin/${email}`)
+//             fetch(`https://variety-furnishing-server-site.vercel.app/user/admin/${email}`)
 //             .then(res => res.json())
 //             .then(data =>{
 //                 if(data){

@@ -5,7 +5,7 @@ const AllReports = () => {
     const [reports, setReport]=useState([]);
 
     useEffect(()=>{
-     axios.get('http://localhost:5000/report')
+     axios.get('https://variety-furnishing-server-site.vercel.app/report')
      .then(res => setReport(res.data))
     },[])
 

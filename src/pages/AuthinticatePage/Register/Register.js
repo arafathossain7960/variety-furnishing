@@ -53,7 +53,7 @@ const Register = () => {
     }
 
     const saveUser=userInfo=>{
-        fetch('http://localhost:5000/user',{
+        fetch('https://variety-furnishing-server-site.vercel.app/user',{
             method:'POST',
             headers:{
                 'content-type':'application/json'
