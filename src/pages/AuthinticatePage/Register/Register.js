@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { json, Link, useNavigate } from 'react-router-dom';
+import {  Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
-import { accessToken } from '../../../hooks/myhooks';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const Register = () => {
@@ -64,7 +63,7 @@ const Register = () => {
         .then(data =>{
             if(data.insertedId){
                
-                accessToken(userInfo.email);
+                // accessToken(userInfo.email);
                 toast.success("Sign up complete",{
                     position:'top-center',
                     theme: "colored",

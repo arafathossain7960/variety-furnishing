@@ -16,6 +16,8 @@ const AuthProvider = ({children}) => {
         setLoading(true);
         return signInWithPopup(auth, googleProvider );
     }
+
+   
     // create user 
     const createUser =(email, password)=>{
         setLoading(true);

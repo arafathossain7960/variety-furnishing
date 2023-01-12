@@ -4,7 +4,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../../context/AuthProvider';
-import { accessToken } from '../../../hooks/myhooks';
 
 const Login = () => {
     const {loginUser, googleSingIn }=useContext(AuthContext);
@@ -21,7 +20,7 @@ const Login = () => {
 loginUser(email, password)
     .then(result =>{
         console.log(result);
-        accessToken(email);
+        // accessToken(email);
     })
     .catch(error =>{
         toast('Login failed');
@@ -35,7 +34,7 @@ loginUser(email, password)
         googleSingIn()
         .then(result =>{
             console.log(result)
-            accessToken(result.user.email)
+            // accessToken(result.user.email)
         })
         .catch(error => {
            toast.error("Login failed",{
