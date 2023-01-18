@@ -1,5 +1,4 @@
-adminEmail: <arafat@gmail.com>
-adminPassword: <arafat123456>
+
 
 # variety furnishing [visit](https://dreamy-kringle-2490c5.netlify.app/).
 
